@@ -9,49 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-        <div class="container">
-                <form action="/action_page.php">
-                  <div class="row">
-                    <h2 style="text-align:center">Login with Social Media or Manually</h2>
-                    <div class="vl">
-                      <span class="vl-innertext">or</span>
-                    </div>
-              
-                    <div class="col">
-                      <a href="https://sv-se.facebook.com/" class="fb btn">
-                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                      </a>
-                      <a href="https://twitter.com/login?lang=sv" class="twitter btn">
-                        <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                      </a>
-                      <a href="https://accounts.google.com/servicelogin" class="google btn">
-                        <i class="fa fa-google fa-fw"></i> Login with Google+
-                      </a>
-                    </div>
-              
-                    <div class="col">
-                      <div class="hide-md-lg">
-                        <p>Or sign in manually:</p>
-                      </div>
-              
-                      <input type="text" name="username" placeholder="Username" required>
-                      <input type="password" name="password" placeholder="Password" required>
-                      <input type="submit" value="Login">
-                    </div>
-              
-                  </div>
-                </form>
-              </div>
-              
-              <div class="bottom-container">
-                <div class="row">
-                  <div class="col">
-                    <a href="signup.html" style="color:white" class="btn">Sign up</a>
-                  </div>
-                  <div class="col">
-                    <a href="#" style="color:white" class="btn">Forgot password?</a>
-                  </div>
-                </div>
-              </div>
+  <section id="mapholder">
+    <h2>Map</h2>
+    <button class="blue" onclick="getLocation()">Try iT!</button>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyBnUTCS3tCCAGyXGzTyqMxIH0RAnl-h1rs"></script>
+  </section>
+  
 </body>
 </html>
