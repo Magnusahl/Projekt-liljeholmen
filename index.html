@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="design.css" />
     <script src="app.js"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="design.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<!--Load map on to the screen-->
+<body onload="initMap()">
+    <section id="map">
+            <h2>Map</h2>
 
-<body>
-    <section id="mapholder">
-        <h2>Map</h2>
-        <button class="blue" onclick="getLocation()">Try iT!</button>
-        <script src="https://maps.google.com/maps/api/js?key=AIzaSyBnUTCS3tCCAGyXGzTyqMxIH0RAnl-h1rs"></script>
 
-        <div class="mapmarker"></div>
     </section>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnUTCS3tCCAGyXGzTyqMxIH0RAnl-h1rs&callback=initMap"></script>
 </body>
-
 </html>
