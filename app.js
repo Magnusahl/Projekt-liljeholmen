@@ -5,7 +5,7 @@ function initMap () {
         document.getElementById('map'), {zoom: 15, center: huddinge});
     var marker = new google.maps.Marker({position: huddinge, map: map});
 }*/
-
+setInterval(initMap, 5000);
 
 var map, infoWindow;
 function initMap() {
