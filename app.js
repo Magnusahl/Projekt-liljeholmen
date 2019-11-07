@@ -11,19 +11,23 @@ var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'),  {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 18
-    
+    zoom: 16,
+    //Remove zoom, fullscreen and streetview options from the map
+    streetViewControl: false,
+    fullscreenControl: false,
+    zoomControl: false
   });
   infoWindow = new google.maps.InfoWindow;
 
-  // Try HTML5 geolocation.
+  //Get user position
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      setTimeout(initMap, 5000);
+      //Refresh the user position
+      setTimeout(initMap, 50000);
       marker.setPosition(pos);
       //infoWindow.iconImage;
       infoWindow.open(map);
@@ -32,18 +36,15 @@ function initMap() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
     
-    //Add pin
+    //Add image to user
     //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
     var marker = new google.maps.Marker({
         map: map,
         position:{lat:59.236528,lng:17.978868},
-        icon: {
-            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-      scale: 5
-        }
+        icon: 'placeholder.png'
     });
 
-    // Define the LatLng coordinates for the polygon.
+    //Place a triangle on the map
     var triangleCoords = [
         {lat: 59.311968, lng: 18.021612},
         {lat: 59.311054, lng: 18.020646},
@@ -56,6 +57,7 @@ function initMap() {
         {lat: 59.310737, lng: 18.024605}
     ]
 
+   
     // Construct the polygon.
     var parkTriangle = new google.maps.Polygon({
       paths: triangleCoords,
@@ -77,6 +79,7 @@ function initMap() {
       });
       tracksTriangle.setMap(map);
 
+  
 /*
     //Info box
     var infoWindow = new google.maps.InfoWindow ({
@@ -87,7 +90,7 @@ function initMap() {
         infoWindow.open(map, marker);
     });
 */
-
+    //Make markers on the map
     var markers = [
     {
         coords:{lat:59.311229,lng:18.021559},
@@ -99,10 +102,16 @@ function initMap() {
         iconImage: {
             path: google.maps.SymbolPath.CIRCLE,
       scale: 7
-        }
+        },
+        content:'<h2>Backen</h2>'
     },
     {
         coords:{lat:59.310205,lng:18.025572},
+        iconImage: {
+            path: google.maps.SymbolPath.CIRCLE,
+      scale: 5
+        },
+        content:'<h2>Rondell</h2>'
     }
     ]
 
