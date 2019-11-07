@@ -5,13 +5,14 @@ function initMap () {
         document.getElementById('map'), {zoom: 15, center: huddinge});
     var marker = new google.maps.Marker({position: huddinge, map: map});
 }*/
-setInterval(initMap, 5000);
+//setInterval(initMap, 5000);
 
 var map, infoWindow;
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'),  {
     center: {lat: -34.397, lng: 150.644},
     zoom: 18
+    
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -22,7 +23,7 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+      setTimeout(initMap, 5000);
       marker.setPosition(pos);
       //infoWindow.iconImage;
       infoWindow.open(map);
