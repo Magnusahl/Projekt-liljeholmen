@@ -19,6 +19,7 @@ function initMap() {
   });
   infoWindow = new google.maps.InfoWindow;
 
+
   //Get user position
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -52,9 +53,9 @@ function initMap() {
     ]
     
     var triangleCoords1 = [
-        {lat: 59.310943, lng: 18.024516},
-        {lat: 59.310856, lng: 18.024173},
-        {lat: 59.310737, lng: 18.024605}
+        {lat: 59.309645, lng: 18.021274},
+        {lat: 59.309170, lng: 18.021546},
+        {lat: 59.309475, lng: 18.022347}
     ]
 
    
@@ -79,7 +80,10 @@ function initMap() {
       });
       tracksTriangle.setMap(map);
 
-  
+      if (initMap == triangleCoords1) {
+          alert("STI!")
+      }
+      
 /*
     //Info box
     var infoWindow = new google.maps.InfoWindow ({
