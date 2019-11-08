@@ -1,5 +1,10 @@
 var map, infoWindow;
 
+var pos = {
+    lat: 0,
+    lng: 0
+}
+
 //Add marker function 
 function addMarker(props){
     var marker = new google.maps.Marker({
@@ -48,6 +53,7 @@ if (navigator.geolocation) {
       handleLocationError(true, infoWindow, map.getCenter());
     });
 }
+
   
     
     //Add image to user
@@ -142,7 +148,9 @@ if (navigator.geolocation) {
 function showMsg() {
   getpos();
   setTimeout('showMsg()', 5000);
-  if (pos.lat < 59.309758 && pos.lng > 18.021585 && pos.lat > 59.309442 && pos.lng <18.021834) {
-  alert("STI!");}
-  
+  //pos.lat = 59.309925;
+  pos.lng = 18.021799;
+  if (pos.lat < 59.310151 && pos.lng > 18.021585 && pos.lat > 59.309004 && pos.lng <18.021834) {
+    alert("STI!");
+  }
 }
