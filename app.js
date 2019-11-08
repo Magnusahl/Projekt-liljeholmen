@@ -29,16 +29,17 @@ function initMap() {
   });
   infoWindow = new google.maps.InfoWindow;
 
-
-  //Get user position
-  if (navigator.geolocation) {
+ getpos();
+function getpos() {
+//Get user position
+if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
       //Refresh the user position
-      setTimeout(initMap, 50000);
+      //setTimeout(initMap, 50000);
       marker.setPosition(pos);
       //infoWindow.iconImage;
       infoWindow.open(map);
@@ -46,6 +47,8 @@ function initMap() {
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
+}
+  
     
     //Add image to user
     //var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
@@ -136,3 +139,10 @@ function initMap() {
         addMarker(markers[i]);}
     }
 
+function showMsg() {
+  getpos();
+  setTimeout('showMsg()', 5000);
+  if (pos.lat < 59.309758 && pos.lng > 18.021585 && pos.lat > 59.309442 && pos.lng <18.021834) {
+  alert("STI!");}
+  
+}
