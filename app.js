@@ -1,16 +1,26 @@
-/*Create a pin on the map
-function initMap () {
-    var huddinge = {lat: 59.236528, lng: 17.978868}
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 15, center: huddinge});
-    var marker = new google.maps.Marker({position: huddinge, map: map});
-}*/
-//setInterval(initMap, 5000);
-
 var map, infoWindow;
+
+//Add marker function 
+function addMarker(props){
+    var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map,
+        icon: props.iconImage
+    });
+
+    if(props.content){
+        var infoWindow = new google.maps.InfoWindow ({
+            content:props.content
+        });
+    
+        marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+        });
+    }
+}
+
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'),  {
-    center: {lat: -34.397, lng: 150.644},
+    map = new google.maps.Map(document.getElementById('map'),  {
     zoom: 16,
     //Remove zoom, fullscreen and streetview options from the map
     streetViewControl: false,
@@ -44,20 +54,13 @@ function initMap() {
         position:{lat:59.236528,lng:17.978868},
         icon: 'placeholder.png'
     });
-
+  }
     //Place a triangle on the map
     var triangleCoords = [
         {lat: 59.311968, lng: 18.021612},
         {lat: 59.311054, lng: 18.020646},
         {lat: 59.311016, lng: 18.022631}
     ]
-    
-    var triangleCoords1 = [
-        {lat: 59.309645, lng: 18.021274},
-        {lat: 59.309170, lng: 18.021546},
-        {lat: 59.309475, lng: 18.022347}
-    ]
-
    
     // Construct the polygon.
     var parkTriangle = new google.maps.Polygon({
@@ -67,33 +70,42 @@ function initMap() {
       strokeWeight: 3,
       fillColor: '#FF0000',
       fillOpacity: 0.35
-    });
-    parkTriangle.setMap(map);
+        });
+        parkTriangle.setMap(map);
 
-    var tracksTriangle = new google.maps.Polygon({
-        paths: triangleCoords1,
+              
+      var tracksRectangle1 = new google.maps.Rectangle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 3,
         fillColor: '#FF0000',
-        fillOpacity: 0.35
-      });
-      tracksTriangle.setMap(map);
+        fillOpacity: 0.35,
+        bounds: {
+            north: 59.310151,
+            south: 59.309004,
+            east: 18.024158,
+            west: 18.01941
+          }
+        });
+        tracksRectangle1.setMap(map);
 
-      if (initMap == triangleCoords1) {
-          alert("STI!")
-      }
-      
-/*
-    //Info box
-    var infoWindow = new google.maps.InfoWindow ({
-        content:'<h2>Huddinge station</h2>'
-    });
+      var tracksRectangle = new google.maps.Rectangle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        bounds: {
+            north: 59.319957,
+            south: 59.319084,
+            east: 18.033598,
+            west: 18.021194
+          }
+         });
+        tracksRectangle.setMap(map);
 
-    marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-    });
-*/
+
+
     //Make markers on the map
     var markers = [
     {
@@ -121,28 +133,6 @@ function initMap() {
 
     //Loop markers
     for (var i =0;i < markers.length;i++){
-        addMarker(markers[i]);
+        addMarker(markers[i]);}
     }
-      
-    
-    //Add marker function
-    
-        function addMarker(props){
-        var marker = new google.maps.Marker({
-            position:props.coords,
-            map:map,
-            icon: props.iconImage
-        });
 
-        if(props.content){
-            var infoWindow = new google.maps.InfoWindow ({
-                content:props.content
-            });
-        
-            marker.addListener('click', function(){
-                infoWindow.open(map, marker);
-            });
-        }
-    }
-}
-}
